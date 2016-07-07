@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PictureClient_JSP">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="httpclient-cache-4.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/httpclient-cache-4.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-4.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/httpclient-4.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/commons-codec-1.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/commons-logging-1.1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-ab-4.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-core-4.3.1-bin/httpcomponents-core-4.3.1/lib/httpcore-ab-4.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fluent-hc-4.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/fluent-hc-4.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpmime-4.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-client-4.3.2-bin/httpcomponents-client-4.3.2/lib/httpmime-4.3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-cli-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-core-4.3.1-bin/httpcomponents-core-4.3.1/lib/commons-cli-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-4.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-core-4.3.1-bin/httpcomponents-core-4.3.1/lib/httpcore-4.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-nio-4.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Dinah/Documents/Files_MyMusic8/ApacheHttp/httpcomponents-core-4.3.1-bin/httpcomponents-core-4.3.1/lib/httpcore-nio-4.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="PictureClient_JSP"/>
+        <property name="java-output-path" value="/PictureClient_JSP/build/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+.wrapper {
+	width:75%;
+	margin:0 auto auto auto;
+	padding-bottom: 50px;
+}
+body {
+	font-size: 10pt;
+	font-family: Helvetica, Arial, Sans-Serif;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-family: Helvetica, Arial, Sans-Serif;
+}
+h1 {
+	background-image: url(../images/header1.jpg) ;
+	background-repeat: repeat-x ;
+	background-position: left top;
+	padding: 8px;
+}
+
+.alert p {
+	text-align:center;
+	font-size: 12pt;
+	font-style:italic;
+}
+#selectErrorAlert {
+	position: relative;
+	left: 0;
+	top: -300px;
+	
+}
+.errMsg {
+	font-size:10pt;
+	color:#800000;
+	font-style:italic;
+}
+span.customerMessage {
+	font-size:14pt;
+	font-style:italic;
+}
+div.customerMessage p {
+	text-align:center;
+	font-size:16pt;
+	font-style:italic;
+}
+/* bootstrap's tab anchors */
+li a:active, li a:link:hover, li a:visited:hover {
+	color:blue;
+}
+.scrollToDisabled{
+	background-color:#DDDDDD;
+}
+.scrollToTable {
+	width:500px;
+	margin:auto;	
+}
+.scrollToTable td{
+	padding:4px;
+}
+.picTable {
+	width: 900px;
+}
+.picTable th, .picTable td {
+	padding:5px;
+}
+#upload {
+	padding-top:60px;
+}
+.inputFile {
+	padding: 30px;
+	
+}
+.inputText {
+	
+	padding:30px;
+	
+}
+
+div.modal-body label{
+	font-size: 14pt;
+	font-style: italic;
+}
+div.modal-body input {
+	border: 1px solid #BBBBFF;
+	font-size: 12pt;
+	padding-left:6px;
+}
