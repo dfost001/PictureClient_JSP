@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="clientErrorResponse" type="clientErrorResponse"/>
+
+  <xs:complexType name="clientErrorResponse">
+    <xs:sequence>
+      <xs:element name="errorEnum" type="errorEnum"/>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="detail" type="xs:string" minOccurs="0"/>
+      <xs:element name="info" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="errorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNSUPPORTED_IMAGE_TYPE"/>
+      <xs:enumeration value="NO_MORE_RECORDS"/>
+      <xs:enumeration value="INVALID_UPLOAD_OBJECT"/>
+      <xs:enumeration value="INVALID_CUSTOMER_ID"/>
+      <xs:enumeration value="INVALID_INDICES"/>
+      <xs:enumeration value="TEMPORARY_DATABASE_ERROR"/>
+      <xs:enumeration value="TEMPORARY_IO_ERROR"/>
+      <xs:enumeration value="EMPTY_UPLOAD"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
