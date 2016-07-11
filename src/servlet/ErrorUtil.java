@@ -26,6 +26,7 @@ public class ErrorUtil {
 	private static Logger logger;
 	private ClientErrorResponse clientError = null;
 	private boolean showAlert = false;
+	private boolean showModal = false;
 	
 	public ErrorUtil(HttpServletRequest request, Throwable t){
 		this.t = t;
@@ -43,7 +44,10 @@ public class ErrorUtil {
 			url = this.processHttpClientError();
 			if(this.showAlert) { //set to false in servlet doGet/doPost 
 				request.getSession().setAttribute(constants.getShowAlert(), true);				
-		    }			
+		    }
+			if(this.showModal){
+				request.getSession().setAttribute(constants.getShowModal(),"show");
+			}
 		}
 		else if(t.getClass() == HttpConnectException.class) {
 			request.getSession().setAttribute(constants.getHttpErrKey(), t);
@@ -80,31 +84,34 @@ public class ErrorUtil {
 				request.getSession().setAttribute(constants.getClientError(), this.clientError);
 				return evalClientError(); //either index.jsp for user-entry or badRequest.jsp for debug
 			}
-			else{
+			else { //response code is 500 - or bad path/path parameters 
 				request.getSession().setAttribute(constants.getHttpErrKey(), this.httpClient);
 				return "/error_pages/httpErr.jsp"; //internal error on remote service
 			}
 		} catch (JAXBException jax) {
 			
-             request.getSession().setAttribute(constants.getJavaErrKey(), jax);
-             return "/error_pages/java_error.jsp";
+           request.getSession().setAttribute(constants.getJavaErrKey(), jax);
+           request.getSession().setAttribute(constants.getStackTrace(), this.getStackTrace(jax));
+           return "/error_pages/java_error.jsp";
 		}
 	}
 	
-	private String evalClientError(){
-		
+	private String evalClientError(){	
 		
 		
 		ErrorEnum err = this.clientError.getErrorEnum();
 		
-		if(err == ErrorEnum.INVALID_CUSTOMER_ID ||
-				err == ErrorEnum.TEMPORARY_DATABASE_ERROR ||
+		if(	err == ErrorEnum.TEMPORARY_DATABASE_ERROR ||
 				err == ErrorEnum.TEMPORARY_IO_ERROR ||
 				err == ErrorEnum.UNSUPPORTED_IMAGE_TYPE ||
 				err == ErrorEnum.EMPTY_UPLOAD  || 
 				err == ErrorEnum.DELETE_ERROR || 
 				err == ErrorEnum.INVALID_COLUMN ){
 			this.showAlert = true;
+			return "/index.jsp";
+		}
+		else if(err == ErrorEnum.INVALID_CUSTOMER_ID){
+			this.showModal = true;
 			return "/index.jsp";
 		}
 		
