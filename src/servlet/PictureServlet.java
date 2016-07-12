@@ -37,7 +37,7 @@ public class PictureServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String picRoot = ""; //from context-param in web.xml
+	private String picRoot = ""; //  context-param in web.xml
 	
 	private static Logger logger = Logger.getLogger(PictureServlet.class);	
 	
@@ -57,11 +57,12 @@ public class PictureServlet extends HttpServlet {
     	
     	picRoot = super.getServletContext().getInitParameter("picRoot");
     	
-    	
+    	//config.getServletContext().getInitParameter(arg0) -- this servlet's params
     }   
 
 	/*
 	 * Invalidate the session at login in case of back-navigation or a new tab
+	 * Required to run SessionDestroy() - clean user directory
 	 * Although not absolutely necessary, it is safe, in case all session variables
 	 * have not been reset
 	 */
@@ -141,6 +142,8 @@ public class PictureServlet extends HttpServlet {
 		request.getSession().removeAttribute(constants.getClientError());
 		
 		request.getSession().removeAttribute(constants.getIdNumberFormat());
+		
+		request.getSession().setAttribute(constants.getShowModal(), "hide");
 	}
 	
 	private boolean hashSynched(HttpServletRequest request){
@@ -174,10 +177,12 @@ public class PictureServlet extends HttpServlet {
 		catch(NumberFormatException fmt){
 			request.getSession().setAttribute(constants.getIdNumberFormat(), 
 					"Customer id '" + customerId + "' does not contain all digits");
-			forwardUrl = "/index.jsp";  //showModal still true, since processing terminated
+			request.getSession().setAttribute(constants.getShowModal(), "show");
+			forwardUrl = "/index.jsp";  
 			
 		}
 		catch(Throwable t){
+			
 			forwardUrl = new ErrorUtil(request, t).getErrPage(); //puts error objects in the session
 		}
 		return forwardUrl;
