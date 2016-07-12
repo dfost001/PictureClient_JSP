@@ -131,10 +131,7 @@ public class PictureServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(forwardUrl).forward(request, response);
 	}
-	/*
-	 * showModal (login) session attribute is set in welcome mapping. It is unset in 
-	 * SessionAttributes#assignSession which is called on success.
-	 */
+	
 	private void reset(HttpServletRequest request){
 		
         request.getSession().removeAttribute(constants.getDebugKey());		
