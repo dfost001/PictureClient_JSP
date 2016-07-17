@@ -102,16 +102,16 @@ public class FileUtil {
       
       public List<String> initImageUrl(List<PicSample> sample, String rootFolder) {
     	  imageUrl = new ArrayList<String>();
-    	  int pos = dirPath.indexOf(rootFolder);
-    	  String context = dirPath.substring(pos); //slice off paths before folder under application context
-    	  context = this.replaceSep(context);
-    	  //context = appContext + "/" + context;
+    	  int pos = dirPath.indexOf(rootFolder); //position of root folder in real path
+    	  String context = dirPath.substring(pos); //obtain root plus the user directory
+    	  context = this.replaceSep(context); //replace back-slash with forward slash
     	  for(PicSample s : sample){
     		  imageUrl.add(context + "/" + s.getPicName());
     	  }
     	  return imageUrl;
       }
       
+     
       private String replaceSep(String path){
     	  
     	  char oldChar = (char)92; //back-slash

@@ -51,13 +51,15 @@ public class PictureServlet extends HttpServlet {
     } 
     
     @Override
-    public void init(ServletConfig config)throws ServletException{
+    public void init(ServletConfig config) throws ServletException{   	
     	
     	super.init(config);
     	
     	picRoot = super.getServletContext().getInitParameter("picRoot");
     	
     	//config.getServletContext().getInitParameter(arg0) -- this servlet's params
+    	
+    	
     }   
 
 	/*
@@ -66,8 +68,8 @@ public class PictureServlet extends HttpServlet {
 	 * Although not absolutely necessary, it is safe, in case all session variables
 	 * have not been reset
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	              throws IOException, ServletException {			
 		
 		String url = "";
 		
@@ -106,8 +108,10 @@ public class PictureServlet extends HttpServlet {
 			request.getSession().invalidate(); //may be more than one tab
 			url="/loggedOut.jsp";
 		}
-		if(url != null) //when returning a zip file to the browser -- see this.zip()
+		if(url != null) {//when returning a zip file to the browser -- see this.zip()
 		   request.getRequestDispatcher(url).forward(request, response);
+		}
+	
 	}
 
 	/**

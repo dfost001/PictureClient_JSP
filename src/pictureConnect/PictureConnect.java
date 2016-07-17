@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import http_util.*;
 import pictureClient.ClientResponse;
@@ -23,6 +24,8 @@ public class PictureConnect {
 	public List<PicSample> pictureList = null;
 	
 	public List<byte[]> pictureBytes = null;
+	
+	public List<String> timeStampList = null;
 	
 	public Customer customer = null;	
 	
@@ -207,7 +210,23 @@ public class PictureConnect {
 			pic.setPhoto(null);
 		}
 		
+		extractGregorianXML();
 		
+		
+	}
+	
+	private void extractGregorianXML() {
+		
+        timeStampList = new ArrayList<String>();
+		
+		for(PicSample pic : pictureList){
+			
+			JAXBElement<XMLGregorianCalendar> el =
+					pic.getDtUpdated();
+			XMLGregorianCalendar cal = el.getValue();
+			timeStampList.add(cal.toString());
+			
+		}
 	}
 	
 }

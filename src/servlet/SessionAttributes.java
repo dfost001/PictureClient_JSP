@@ -16,10 +16,19 @@ import javax.servlet.http.HttpSession;
 
 public class SessionAttributes {
 	
+	/*
+	 * Lists from the session
+	 */
 	private List<PicSample> picSampleList;
 	private List<String> imageUrlList;
+	private List<String> timeStampList;
+	/*
+	 * Most recent retrieval from service connection
+	 */
 	private List<PicSample> tmpSample;
 	private List<String> tmpUrl;
+	private List<String> tmpTimeStamp;
+	
 	private Customer customer;
 	private Constants constants;
 	private ClientResponse client;
@@ -39,8 +48,12 @@ public class SessionAttributes {
 		client = clientResponse;
 		picSampleList = (List<PicSample>)request.getSession().getAttribute(constants.getSampleListKey());
 		imageUrlList = (List<String>)request.getSession().getAttribute(constants.getImgUrlKey());
+		timeStampList = (List<String>)request.getSession().getAttribute(Constants.timeStampList);
+		
+		tmpTimeStamp = connect.timeStampList;
 		customer = connect.customer;
 		tmpSample = connect.pictureList;
+		
 		if(tmpSample != null && tmpSample.size() > 0){
 			tmpUrl = writeToFile(request,connect);			
 		}
@@ -73,16 +86,19 @@ public class SessionAttributes {
 		if(client.getIndexFrom() == -1) {
 			this.picSampleList = null;
 			this.imageUrlList = null;
+			this.timeStampList = null;
 		}
 		else if(client.getIndexFrom()==0) {
 			
 			this.picSampleList = tmpSample;
 			this.imageUrlList = tmpUrl;
+			this.timeStampList = this.tmpTimeStamp;
 			
 		} else {
 			
 			picSampleList.addAll(tmpSample);
 			imageUrlList.addAll(tmpUrl);
+			this.timeStampList.addAll(tmpTimeStamp);
 			
 		}
 	}
@@ -96,7 +112,7 @@ public class SessionAttributes {
 		session.setAttribute(constants.getSampleListKey(), this.picSampleList);
 		session.setAttribute(constants.getCount(), count);
 		session.setAttribute(constants.getCustomerKey(), customer);
-		session.setAttribute(constants.getShowModal(), "hide");
+		session.setAttribute(Constants.timeStampList,this.timeStampList);
 		session.setAttribute(Constants.sessionHash, SessionHash.createHash
 				(client, customer, picSampleList));
 		

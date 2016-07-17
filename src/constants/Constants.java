@@ -29,6 +29,7 @@ public class Constants {
 	public static final String constChkDownloadPic = "chkDownloadPic";
 	public static final String constDeletedPicNames = "deletedPicNames";
 	public static final String sessionHash = "sessionHash";
+	public static final String timeStampList = "timeStampList";
 
 	private final String showModal = "showModal";
 	private final String showAlert = "showAlert";
@@ -146,8 +147,7 @@ public class Constants {
 	public String getShowDeleteSuccess() {
 		return showDeleteSuccess;
 	}
-	
-	
+
 	
        
-}
+} //end constants

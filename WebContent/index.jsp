@@ -41,7 +41,7 @@
 		      <span>&times;</span>
 		      </button>
 		      <p><c:out value="Please make your checkbox selection before continuing." /></p>
-       </div><!-- visibility animated if no selection -->	
+       </div><!-- hidden initially via CSS visibility animated if no selection -->	
 	   <p id="debug"></p>	
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#view"
@@ -92,9 +92,12 @@
 										<td><a href="#">${num}</a></td>
 									</c:otherwise>
 								</c:choose>
-								<c:if test="${num lt 50}">
-								   <td>|</td>
-								</c:if>
+								<c:choose>
+								   <c:when test="${num lt 15}">
+								      <td>|</td>
+								   </c:when>
+								   <c:otherwise><td>&nbsp;</td></c:otherwise>
+								</c:choose>   
 							</c:forEach>
 							<td>]</td>
 				 </tr>
@@ -120,7 +123,7 @@
 								<td><img src="${imgUrlKey[status.index]}" /><br /> <c:out
 										value="${sample.originalPicName}" /></td>
 								<td><c:out value="${sample.comment}" /><br /><c:out
-								        value="${sample.dtUpdated}" /> 
+								        value="${timeStampList[status.index]}" /> 
 								<br /> <c:out
 								value="Photo Id: ${sample.photoId}" /><br/><c:out 
 								value="${sample.picName}" /></td>
