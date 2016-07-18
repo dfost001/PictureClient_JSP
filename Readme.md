@@ -29,7 +29,7 @@ The utility is passed the real path to the picture folder, the user directory, a
  
 <b>The REST Client Components</b>
 
-<p style="text-decoration:underline">Interfacing module:</p><br/>
+<b>Interfacing module<b>
 Contains methods that correspond to the service endpoints – constructs the request URL with parameters
  
 <b>Apache TCP/IP client</b>
