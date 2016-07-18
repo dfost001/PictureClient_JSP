@@ -9,6 +9,10 @@ The application consists of a servlet annotated with URL-mappings, processing co
 
 REST service interfacing module, and related processing units.
 
+<i>Parts Utility:</i>
+
+Extracts the byte streams for the uploaded image, and comment into the Client Request object. The content-disposition header, and user-agent are used to obtain the file-name. (Servlet requires @MultiPartConfig)
+
 <i>File Utility:</i>
 
 Creates the client directory, writes the files to disk, and generates a list of image URL’s.
@@ -19,8 +23,7 @@ Assigns the objects required by the JSP-UI into the session. Depending on the ob
 
 <i>Error Utility:</i>
 
-All errors are thrown up to the servlet for handling. The servlet passes the exception to the utility to determine the next page to render. The utility also evaluates the enumerated error if a
-custom error object is returned. There are error pages for an internal Java exception, a TCP/IP connection problem, a 400 or 500 Http response code, a developer error returned in the service object. A service enumerated error corresponding to user-entry returns the index page.
+All errors are thrown up to the servlet for handling. The servlet passes the exception to the utility to determine the next page to render. The utility also evaluates the enumerated error if a custom error object is returned. There are error pages for an internal Java exception, a TCP/IP connection problem, a 400 or 500 Http response code, and a developer error returned in the service object. The index page is returned if a service enumerated error corresponding to user-entry is evaluated.
 
 <i>Zip Utility</i>
 
@@ -31,13 +34,13 @@ The utility is passed the real path to the picture folder, the user directory, a
 Interfacing module
 Contains methods that correspond to the service endpoints – constructs the request URL with parameters
  
-Apache TCP/IP client
+<u>Apache TCP/IP client</u>
 
-JAXB utility
+<u>JAXB utility</u>
 
-Http Response Code Utility
+<u>Http Response Code Utility</u>
 
-Custom exceptions for a connection error and a client request error.
+<u>Custom exceptions - connection and client</u>
 
 If the Apache request is successful, the Response utility evaluates the status code. 
 
@@ -60,11 +63,5 @@ A tabbed division containing a standard html file input control is used to uploa
 The application is started with a meta-refresh tag in the HTML header of the index page that redirects the browser request to the controller servlet. The servlet mapping for the initial request sets the session variable required to show the Bootstrap modal login. The value is rendered in a hidden input control, and read by JavaScript. 
 
 EL references the session lists to display the images and meta-data in an iteration tag with the list of entity objects as the data source. The index property of the tag’s status attribute is used to index into image URL array. 
-
-
-
-
-
-
 
 </div>
