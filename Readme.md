@@ -5,15 +5,15 @@ The application consists of a servlet annotated with URL-mappings, processing co
 
 <b>Processing Components:</b><br/><br/>
 
-<i>REST client:</i><br/><br/>
+<i>REST client:</i>
 
 REST service interfacing module, and related processing units.<br/><br/>
 
-<i>Parts Utility:</i><br/><br/>
+<i>Parts Utility:</i>
 
-Extracts the byte streams for the uploaded image, and comment into the Client Request object. The content-disposition header, and user-agent are used to obtain the file-name. (Servlet requires @MultiPartConfig)<br/><br/>
+Extracts the byte streams for the uploaded image, and comment into the Client Request object. The content-disposition header, and user-agent are used to obtain the file-name. (Servlet requires @MultiPartConfig)
 
-<i>File Utility:</i><br/><br/>
+<i>File Utility:</i>
 
 Creates the client directory, writes the files to disk, and generates a list of image URL’s.
 <br/><br/>
